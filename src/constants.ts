@@ -43,7 +43,7 @@ export const engagementDataEn: EngagementData = {
     "Gauravi Singh",
     "Anay Singh"
   ],
-  musicFile: "/bg-music.mp3",
+  musicFile: "/bg-music.ogg",
   labels: {
     joinUs: "Join us in celebrating the auspicious engagement of",
     twoSouls: "Two souls, one destiny",
