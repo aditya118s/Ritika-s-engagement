@@ -50,17 +50,63 @@ const App: React.FC = () => {
     };
   }, [isPlaying, currentSlide]);
 
+  useEffect(() => {
+    if (audioRef.current) {
+      // Set initial volume to maximum
+      audioRef.current.volume = 1.0;
+      
+      audioRef.current.addEventListener('loadeddata', () => {
+        console.log("Audio loaded successfully, duration:", audioRef.current?.duration);
+      });
+      audioRef.current.addEventListener('error', (e) => {
+        console.error("Audio load error:", e, "src:", data.musicFile);
+      });
+      audioRef.current.addEventListener('play', () => {
+        console.log("Audio started playing, volume:", audioRef.current?.volume);
+      });
+      audioRef.current.addEventListener('pause', () => {
+        console.log("Audio paused");
+      });
+      audioRef.current.addEventListener('volumechange', () => {
+        console.log("Volume changed to:", audioRef.current?.volume);
+      });
+    }
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.removeEventListener('loadeddata', () => {});
+        audioRef.current.removeEventListener('error', () => {});
+        audioRef.current.removeEventListener('play', () => {});
+        audioRef.current.removeEventListener('pause', () => {});
+        audioRef.current.removeEventListener('volumechange', () => {});
+      }
+    };
+  }, [data.musicFile]);
+
   // Attempt to play music on first user interaction anywhere on the screen
   useEffect(() => {
     const handleFirstInteraction = () => {
       if (audioRef.current && !isMusicPlaying) {
-        audioRef.current.play().then(() => setIsMusicPlaying(true)).catch(e => console.log("Autoplay blocked"));
+        audioRef.current.volume = 1.0; // Set volume to maximum
+        audioRef.current.currentTime = 0; // Start from beginning
+        audioRef.current.play()
+          .then(() => {
+            setIsMusicPlaying(true);
+            console.log("Audio playing successfully at volume:", audioRef.current?.volume);
+          })
+          .catch(e => {
+            console.log("Autoplay blocked or error:", e.message);
+            // Try again with user gesture
+            setTimeout(() => {
+              audioRef.current!.volume = 1.0;
+              audioRef.current?.play().then(() => setIsMusicPlaying(true)).catch(err => console.log("Still blocked:", err));
+            }, 100);
+          });
       }
       window.removeEventListener('click', handleFirstInteraction);
     };
     window.addEventListener('click', handleFirstInteraction);
     return () => window.removeEventListener('click', handleFirstInteraction);
-  }, []);
+  }, [isMusicPlaying]);
 
   const handleNextSlide = () => {
     setCurrentSlide((prev) => (prev + 1) % TOTAL_SLIDES);
@@ -85,7 +131,8 @@ const App: React.FC = () => {
       if (isMusicPlaying) {
         audioRef.current.pause();
       } else {
-        audioRef.current.play();
+        audioRef.current.volume = 1.0; // Set volume to maximum
+        audioRef.current.play().catch(err => console.log("Play failed:", err));
       }
       setIsMusicPlaying(!isMusicPlaying);
     }
@@ -97,7 +144,10 @@ const App: React.FC = () => {
 
   return (
     <div className={`app-container ${fontMainClass}`}>
-      <audio ref={audioRef} src={data.musicFile} loop />
+      <audio ref={audioRef} loop preload="auto" crossOrigin="anonymous">
+        <source src={data.musicFile} type="audio/ogg" />
+        Your browser does not support the audio element.
+      </audio>
 
       {/* Background Layer */}
       <div className="background-wrapper">
