@@ -199,10 +199,6 @@ const App: React.FC = () => {
                 </ul>
               </div>
             </div>
-
-            <div className="progress-container">
-              <div className="progress-bar" style={{ width: `${progress}%` }} />
-            </div>
           </div>
         )}
 
