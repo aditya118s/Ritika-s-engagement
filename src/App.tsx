@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { engagementDataEn, engagementDataHi, EngagementData } from './constants';
 import { ChevronRight, ChevronLeft, Pause, Play, Calendar, MapPin, Phone, Languages, Volume2, VolumeX } from 'lucide-react';
+import { Howl } from 'howler';
 import './index.css';
 
 // Generating decorative traditional sparkles
@@ -21,13 +22,46 @@ const App: React.FC = () => {
   const [progress, setProgress] = useState(0);
   const [lang, setLang] = useState<Language>('hi'); // Default to Hindi
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
-  const audioRef = useRef<HTMLAudioElement>(null);
+  const soundRef = useRef<Howl | null>(null);
 
   const SLIDE_DURATION = 10000;
   const TOTAL_SLIDES = 5;
   const UPDATE_INTERVAL = 50;
 
   const data: EngagementData = lang === 'hi' ? engagementDataHi : engagementDataEn;
+
+  // Initialize Howler audio
+  useEffect(() => {
+    if (!soundRef.current && data.musicFile) {
+      soundRef.current = new Howl({
+        src: [data.musicFile as string],
+        format: ['ogg'],
+        loop: true,
+        volume: 1.0,
+        html5: true,
+        preload: true,
+        mute: false,
+        onload: () => {
+          console.log("✓ Audio loaded successfully with Howler");
+        },
+        onloaderror: (id, error) => {
+          console.error("✗ Failed to load audio:", error);
+        },
+        onplay: () => {
+          console.log("✓ Audio started playing");
+          setIsMusicPlaying(true);
+        },
+        onstop: () => {
+          console.log("Audio stopped");
+          setIsMusicPlaying(false);
+        },
+      });
+    }
+    
+    return () => {
+      // Cleanup on unmount
+    };
+  }, [data.musicFile]);
 
   useEffect(() => {
     let interval: number | undefined;
@@ -50,57 +84,13 @@ const App: React.FC = () => {
     };
   }, [isPlaying, currentSlide]);
 
-  useEffect(() => {
-    if (audioRef.current) {
-      // Set initial volume to maximum
-      audioRef.current.volume = 1.0;
-      
-      audioRef.current.addEventListener('loadeddata', () => {
-        console.log("Audio loaded successfully, duration:", audioRef.current?.duration);
-      });
-      audioRef.current.addEventListener('error', (e) => {
-        console.error("Audio load error:", e, "src:", data.musicFile);
-      });
-      audioRef.current.addEventListener('play', () => {
-        console.log("Audio started playing, volume:", audioRef.current?.volume);
-      });
-      audioRef.current.addEventListener('pause', () => {
-        console.log("Audio paused");
-      });
-      audioRef.current.addEventListener('volumechange', () => {
-        console.log("Volume changed to:", audioRef.current?.volume);
-      });
-    }
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.removeEventListener('loadeddata', () => {});
-        audioRef.current.removeEventListener('error', () => {});
-        audioRef.current.removeEventListener('play', () => {});
-        audioRef.current.removeEventListener('pause', () => {});
-        audioRef.current.removeEventListener('volumechange', () => {});
-      }
-    };
-  }, [data.musicFile]);
-
   // Attempt to play music on first user interaction anywhere on the screen
   useEffect(() => {
     const handleFirstInteraction = () => {
-      if (audioRef.current && !isMusicPlaying) {
-        audioRef.current.volume = 1.0; // Set volume to maximum
-        audioRef.current.currentTime = 0; // Start from beginning
-        audioRef.current.play()
-          .then(() => {
-            setIsMusicPlaying(true);
-            console.log("Audio playing successfully at volume:", audioRef.current?.volume);
-          })
-          .catch(e => {
-            console.log("Autoplay blocked or error:", e.message);
-            // Try again with user gesture
-            setTimeout(() => {
-              audioRef.current!.volume = 1.0;
-              audioRef.current?.play().then(() => setIsMusicPlaying(true)).catch(err => console.log("Still blocked:", err));
-            }, 100);
-          });
+      if (soundRef.current && !isMusicPlaying) {
+        console.log("First interaction detected, attempting to play audio with Howler...");
+        soundRef.current.volume(1.0);
+        soundRef.current.play();
       }
       window.removeEventListener('click', handleFirstInteraction);
     };
@@ -127,14 +117,15 @@ const App: React.FC = () => {
   };
 
   const toggleMusic = () => {
-    if (audioRef.current) {
+    if (soundRef.current) {
       if (isMusicPlaying) {
-        audioRef.current.pause();
+        soundRef.current.stop();
+        setIsMusicPlaying(false);
       } else {
-        audioRef.current.volume = 1.0; // Set volume to maximum
-        audioRef.current.play().catch(err => console.log("Play failed:", err));
+        soundRef.current.volume(1.0);
+        soundRef.current.play();
+        setIsMusicPlaying(true);
       }
-      setIsMusicPlaying(!isMusicPlaying);
     }
   };
 
@@ -144,10 +135,6 @@ const App: React.FC = () => {
 
   return (
     <div className={`app-container ${fontMainClass}`}>
-      <audio ref={audioRef} loop preload="auto" crossOrigin="anonymous">
-        <source src={data.musicFile} type="audio/ogg" />
-        Your browser does not support the audio element.
-      </audio>
 
       {/* Background Layer */}
       <div className="background-wrapper">
