@@ -180,16 +180,16 @@ const App: React.FC = () => {
             
             {lang === 'hi' ? (
               <>
-                <h1 className={fontTitleClass} style={{ display: 'inline' }}>{data.groomName}</h1>
-                <span className={`ampersand ${fontMainClass}`} style={{ display: 'inline', margin: '0 0.5rem' }}>व</span>
                 <h1 className={fontTitleClass} style={{ display: 'inline' }}>{data.brideName}</h1>
+                <span className={`ampersand ${fontMainClass}`} style={{ display: 'inline', margin: '0 0.5rem' }}>व</span>
+                <h1 className={fontTitleClass} style={{ display: 'inline' }}>{data.groomName}</h1>
                 <h2 className="subtitle" style={{ marginTop: '1.5rem' }}>{data.labels.joinUs}</h2>
               </>
             ) : (
               <>
-                <h1 className={fontTitleClass} style={{ display: 'inline' }}>{data.groomName}</h1>
-                <span className={`ampersand ${fontMainClass}`} style={{ display: 'inline', margin: '0 0.5rem' }}>&</span>
                 <h1 className={fontTitleClass} style={{ display: 'inline' }}>{data.brideName}</h1>
+                <span className={`ampersand ${fontMainClass}`} style={{ display: 'inline', margin: '0 0.5rem' }}>&</span>
+                <h1 className={fontTitleClass} style={{ display: 'inline' }}>{data.groomName}</h1>
                 <h2 className="subtitle">{data.labels.joinUs}</h2>
               </>
             )}
@@ -225,7 +225,7 @@ const App: React.FC = () => {
           <div className="slide-container traditional-border" key="slide-2">
             <h3 className={`section-title ${fontTitleClass}`}>{data.labels.brideFamily}</h3>
             <ul className="host-list" style={{ marginTop: '2rem' }}>
-              {data.groomHostsList.map((host, idx) => (
+              {data.brideHostsList.map((host, idx) => (
                 <li key={idx}><span className="bullet">✤</span> {host}</li>
               ))}
             </ul>
@@ -234,7 +234,7 @@ const App: React.FC = () => {
 
         {currentSlide === 3 && (
           <div className="slide-container traditional-border" key="slide-3">
-            <h3 className={`section-title ${fontTitleClass}`}>{data.labels.groomFamily}</h3>
+            <h3 className={`section-title ${fontTitleClass}`}>{data.labels.brideFamily}</h3>
             <ul className="host-list" style={{ marginTop: '2rem' }}>
               {data.groomHostsList.map((host, idx) => (
                 <li key={idx}><span className="bullet">✤</span> {host}</li>

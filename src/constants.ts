@@ -35,8 +35,8 @@ export const engagementDataEn: EngagementData = {
     "Aditya Pratap Singh"
   ],
   brideHostsList: [
-    "Mr. Anil Kumar Singh",
-    "Mrs. Priyanka Singh",
+    "Anil Kumar Singh",
+    "Priyanka Singh",
     "Gauravi Singh",
     "Anay Singh"
   ],
@@ -57,7 +57,7 @@ export const engagementDataHi: EngagementData = {
   date: "1 मई, 2026",
   time: "शाम 6:00 बजे",
   venue: "लॉन नं. 1, कुंवर उपवन, सिविल लाइन्स, बलिया ",
-  contactNumber: "+91 9415659717, 9799898315",
+  contactNumber: "+91 94502 23592",
   displayMessage: "प्रतीक और रितिका की मधुर सगाई",
   groomHostsList: [
     "विजेन्द्र प्रताप सिंह, प्रवक्ता,  कुंवर सिंह इंटर कॉलेज, बलिया",
@@ -65,7 +65,7 @@ export const engagementDataHi: EngagementData = {
     "आदित्य प्रताप सिंह"
   ],
   brideHostsList: [
-    "श्री अनिल कुमार सिंह",
+    "अनिल कुमार सिंह",
     "श्रीमती प्रियंका सिंह",
     "गौरवी सिंह",
     "अनय सिंह"
