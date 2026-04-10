@@ -27,7 +27,7 @@ export const engagementDataEn: EngagementData = {
   date: "1st May, 2026",
   time: "6:00 PM",
   venue: "Lawn no. 1, Kunwar Upawan, Civil Lines, Ballia",
-  contactNumber: "+91 9415659717, 9799898315",
+  contactNumber: "+91 94502 23592",
   displayMessage: "Pratik and Ritika's Auspicious Engagement",
   groomHostsList: [
     "Vijendra Pratap Singh, Lecturer at Kunwar Singh Inter College, Ballia",
