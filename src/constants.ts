@@ -27,7 +27,7 @@ export const engagementDataEn: EngagementData = {
   date: "1st May, 2026",
   time: "6:00 PM",
   venue: "Lawn no. 1, Kunwar Upawan, Civil Lines, Ballia",
-  contactNumber: "+91 83036 36799, 9336908206",
+  contactNumber: "+91 83036 36799, 9336908260",
   displayMessage: "Pratik and Ritika's Auspicious Engagement",
   groomHostsList: [
     "Vijendra Pratap Singh, Lecturer at Kunwar Singh Inter College, Ballia",
@@ -57,7 +57,7 @@ export const engagementDataHi: EngagementData = {
   date: "1 मई, 2026",
   time: "शाम 6:00 बजे",
   venue: "लॉन नं. 1, कुंवर उपवन, सिविल लाइन्स, बलिया ",
-  contactNumber: "+91 83036 36799, 9336908206",
+  contactNumber: "+91 83036 36799, 9336908260",
   displayMessage: "प्रतीक और रितिका की मधुर सगाई",
   groomHostsList: [
     "विजेन्द्र प्रताप सिंह, प्रवक्ता,  कुंवर सिंह इंटर कॉलेज, बलिया",
