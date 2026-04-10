@@ -35,11 +35,14 @@ export const engagementDataEn: EngagementData = {
     "Aditya Pratap Singh"
   ],
 brideHostsList: [
-  
-  "Satyanarayan Singh",
-  "Shakuntala Singh","Anil Kumar Singh",
-  "Priyanka Singh",
+  "Chandrashekhar Singh",
+  "Jitendra Singh",
+  "Satyanarayan Singh - Shakuntala Singh",
+  "Narendra Singh - Kanchan Singh",
+  "Anil Kumar Singh - Priyanka Singh",
+  "Samrendra Singh - Sangeeta Singh",
 ],
+
   musicFile: "/bg-music.ogg",
   labels: {
     joinUs: "ki madhurmay sagaai ki paavan vela par",
@@ -65,11 +68,14 @@ export const engagementDataHi: EngagementData = {
     "आदित्य प्रताप सिंह"
   ],
 brideHostsList: [
-  
-  "सत्यनारायण सिंह",
-  "शकुंतला सिंह","अनिल कुमार सिंह",
-  "प्रियंका सिंह",
+  "चंद्रशेखर सिंह",
+  "जितेंद्र सिंह",
+  "सत्यनारायण सिंह - शकुंतला सिंह",
+  "नरेंद्र सिंह - कंचन सिंह",
+  "अनिल कुमार सिंह - प्रियंका सिंह",
+  "समरेंद्र सिंह - संगीता सिंह",
 ],
+
   musicFile: "/bg-music.mp3",
   labels: {
     joinUs: "की मधुरमय सगाई की पावन वेला पर",
