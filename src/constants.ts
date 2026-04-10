@@ -34,12 +34,12 @@ export const engagementDataEn: EngagementData = {
     "Guriya Singh",
     "Aditya Pratap Singh"
   ],
-  brideHostsList: [
-    "Anil Kumar Singh",
-    "Priyanka Singh",
-    "Gauravi Singh",
-    "Anay Singh"
-  ],
+brideHostsList: [
+  
+  "Satyanarayan Singh",
+  "Shakuntala Singh","Anil Kumar Singh",
+  "Priyanka Singh",
+],
   musicFile: "/bg-music.ogg",
   labels: {
     joinUs: "ki madhurmay sagaai ki paavan vela par",
@@ -64,12 +64,12 @@ export const engagementDataHi: EngagementData = {
     "श्रीमती गुड़िया सिंह",
     "आदित्य प्रताप सिंह"
   ],
-  brideHostsList: [
-    "अनिल कुमार सिंह",
-    "श्रीमती प्रियंका सिंह",
-    "गौरवी सिंह",
-    "अनय सिंह"
-  ],
+brideHostsList: [
+  
+  "सत्यनारायण सिंह",
+  "शकुंतला सिंह","अनिल कुमार सिंह",
+  "प्रियंका सिंह",
+],
   musicFile: "/bg-music.mp3",
   labels: {
     joinUs: "की मधुरमय सगाई की पावन वेला पर",
