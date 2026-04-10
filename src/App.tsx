@@ -175,6 +175,8 @@ const App: React.FC = () => {
       <div className="slide-wrapper">
         {currentSlide === 0 && (
           <div className="slide-container traditional-border" key="slide-0">
+            <p className="om-symbol mb-4">॥ ॐ श्री गणेशाय नमः ॥</p>
+            
             {lang === 'hi' ? (
               <>
                 <h1 className={fontTitleClass}>{data.groomName}</h1>
@@ -190,8 +192,6 @@ const App: React.FC = () => {
                 <h1 className={fontTitleClass}>{data.brideName}</h1>
               </>
             )}
-
-            <p className="om-symbol mt-4">॥ ॐ श्री गणेशाय नमः ॥</p>
 
             <p style={{ marginTop: '1.5rem', fontSize: '1.4rem', fontWeight: '500', color: 'var(--accent)' }}>
               {data.labels.twoSouls} <span className="heart" style={{ color: 'var(--primary)' }}>✦</span>

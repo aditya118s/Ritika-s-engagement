@@ -27,7 +27,7 @@ export const engagementDataEn: EngagementData = {
   brideName: "Ritika",
   date: "1st May, 2026",
   time: "6:00 PM Onwards",
-  venue: "Lawn No. 2, Kunwar Upawan, Civil Lines, Ballia",
+  venue: "Lawn no. 1, Kunwar Upawan, Civil Lines, Ballia",
   contactNumber: "+91 9415659717, 9799898315",
   displayMessage: "You are cordially invited",
   groomHostsList: [
@@ -60,7 +60,7 @@ export const engagementDataHi: EngagementData = {
   brideName: "रितिका",
   date: "1 मई, 2026",
   time: "शाम 6:00 बजे से",
-  venue: "लॉन नं. 2, कुंवर उपवन, सिविल लाइन्स, बलिया",
+  venue: "लॉन नं. 1, कुंवर उपवन, सिविल लाइन्स, बलिया",
   contactNumber: "+91 9415659717, 9799898315",
   displayMessage: "आप सपरिवार सादर आमंत्रित हैं",
   groomHostsList: [
@@ -74,7 +74,7 @@ export const engagementDataHi: EngagementData = {
     "श्री अनिल कुमार सिंह",
     "श्रीमती प्रियंका सिंह",
     "गौरवी सिंह",
-    "आनय सिंह"
+    "अनय सिंह"
   ],
   musicFile: "/bg-music.mp3",
   labels: {
